@@ -1,0 +1,135 @@
+:root {
+  --base-padding: 30px;
+  --accent-color: crimson;
+  --secondary-color: rgb(250, 134, 157);
+  --primary-gray: #ebebeb;
+  --box-shadow: 1px 2px 5px rgb(248, 218, 213);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.headerss {
+  display: flex;
+  height: 52px;
+  width: 100vw;
+  z-index: 100;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: var(--base-padding);
+  padding-right: var(--base-padding);
+  box-shadow: var(--box-shadow);
+}
+.headerss h1 {
+  padding-left: calc(2 * var(--base-padding));
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.75em;
+}
+
+.headerss ul {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  align-items: center;
+  width: 70ch;
+  list-style-type: none;
+}
+.headerss ul li {
+  font-size: 1.2rem;
+  height: 80%;
+  width: 10ch;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.headerss ul li:hover {
+  color: var(--secondary-color);
+}
+.activetab {
+  font-size: 1.25em;
+  height: 80%;
+  width: 10ch;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: var(--accent-color);
+  color: white;
+}
+
+@media only screen and (max-width: 900px) {
+  .headerss ul {
+    width: 50ch;
+  }
+}
+
+/* __________________________________SECTION A_____________________________________ */
+.section-a {
+  width: 100vw;
+  height: calc(100vh - 3.5em);
+  display: flex;
+  padding-left: var(--base-padding);
+  padding-right: var(--base-padding);
+  margin-top: var(--base-padding);
+}
+
+.qna {
+  width: 75%;
+  height: 100%;
+  /* padding-left: var(--base-padding); */
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.qna-header {
+  display: flex;
+  /* padding-left: var(--base-padding); */
+  padding-left: calc(2 * var(--base-padding));
+}
+
+.qna-header-h1 {
+  font-size: 1rem;
+  height: 30px;
+  width: 170px;
+  padding-left: var(--base-padding);
+  padding-right: var(--base-padding);
+  margin-right: 30px;
+  background-color: var(--primary-gray);
+  display: flex;
+  align-items: center;
+  font-weight: lighter;
+  justify-content: center;
+  cursor: pointer;
+}
+.qna-header-h1:hover {
+  color: var(--accent-color);
+}
+
+.profile {
+  width: 25%;
+  height: 100%;
+}
+
+/* ________________________________________POST___________________________________ */
+
+.posts-area {
+  margin-top: calc(0.5 * var(--base-padding));
+  padding-left: var(--base-padding);
+  height: 100%;
+  width: 100%;
+  /* background: chartreuse; */
+}
+
+.post {
+  /* margin-top: calc(0.5 * var(--base-padding)); */
+  margin-top: var(--base-padding);
+  margin-left: var(--base-padding);
+}
+.post a {
+  font-size: 1.25rem;
+  text-decoration: none;
+  /* color: black; */
+}
