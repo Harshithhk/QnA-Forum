@@ -1,7 +1,6 @@
 :root {
   --base-padding: 30px;
   --accent-color: crimson;
-  --light-accent-color: rgb(252, 146, 168);
   --secondary-color: rgb(250, 134, 157);
   --primary-gray: #ebebeb;
   --box-shadow: 1px 2px 5px rgb(248, 218, 213);
@@ -10,9 +9,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-hr {
-  /* border-color: var(--accent-color); */
 }
 .headerss {
   display: flex;
@@ -29,7 +25,6 @@ hr {
   padding-left: calc(2 * var(--base-padding));
   font-family: "Montserrat", sans-serif;
   font-size: 1.75em;
-  color: var(--accent-color);
 }
 
 .headerss ul {
@@ -84,7 +79,7 @@ hr {
 }
 
 .qna {
-  width: 70%;
+  width: 75%;
   height: 100%;
   /* padding-left: var(--base-padding); */
   font-family: Arial, Helvetica, sans-serif;
@@ -98,8 +93,6 @@ hr {
 
 .qna-header-h1 {
   font-size: 1rem;
-  font-weight: lighter;
-  color: rgb(122, 122, 122);
   height: 30px;
   width: 170px;
   padding-left: var(--base-padding);
@@ -108,7 +101,7 @@ hr {
   background-color: var(--primary-gray);
   display: flex;
   align-items: center;
-
+  font-weight: lighter;
   justify-content: center;
   cursor: pointer;
 }
@@ -132,18 +125,14 @@ hr {
 }
 
 .post {
+  /* margin-top: calc(0.5 * var(--base-padding)); */
   margin-top: var(--base-padding);
   margin-left: var(--base-padding);
-  padding-right: var(--base-padding);
-
-  border-right: 1px solid var(--accent-color);
-  /* background-color: var(--primary-gray); */
 }
-
-.post-header :nth-child(1) {
-  font-size: 1.75rem;
-  font-weight: bold;
+.post a {
+  font-size: 1.25rem;
   text-decoration: none;
+<<<<<<< HEAD
   color: black;
   margin-right: 30px;
   display: block;
@@ -291,4 +280,7 @@ p {
 
   padding: 10px 25px;
   /* margin-top: 18px; */
+=======
+  /* color: black; */
+>>>>>>> parent of 4098029... added qna componentt
 }
