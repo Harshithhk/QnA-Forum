@@ -80,6 +80,7 @@ hr {
   padding-left: var(--base-padding);
   padding-right: var(--base-padding);
   margin-top: var(--base-padding);
+  font-family: "Montserrat", sans-serif;
 }
 
 .qna {
@@ -125,9 +126,9 @@ hr {
 .posts-area {
   margin-top: calc(0.5 * var(--base-padding));
   padding-left: var(--base-padding);
-  height: 100%;
+  height: fit-content;
   width: 100%;
-  /* background: chartreuse; */
+  /* background: rgb(248, 250, 246); */
 }
 
 .post {
@@ -170,7 +171,7 @@ hr {
   /* background-color: lightcyan; */
 }
 .post-image img {
-  /* display: none; */
+  display: none;
   max-width: 100%;
   min-width: 100%;
 }
@@ -182,7 +183,13 @@ p {
   width: 100%;
 }
 /* ______________________________REPLIES____________________________ */
+.hiddenreply {
+  display: none;
+  font-family: "Montserrat", sans-serif;
+}
 .no-of-replies {
+  position: relative;
+  cursor: pointer;
   display: flex;
   align-items: center;
   margin-top: calc(0.5 * var(--base-padding));
@@ -192,15 +199,36 @@ p {
   background-color: rgb(184, 247, 247);
   color: gray;
 }
+.downarrow {
+  position: absolute;
+  left: 50%;
+  animation: bonk 3s infinite ease-in-out;
+}
+@keyframes bonk {
+  0% {
+    transform: translateY(-5px);
+  }
+  80% {
+    transform: translateY(5px);
+  }
+  100% {
+    opacity: 0;
+  }
+}
 .replies {
+  display: flex;
   height: fit-content;
   width: 100%;
-  margin-top: calc(0.5 * var(--base-padding));
+  padding-top: calc(0.5 * var(--base-padding));
   padding-left: var(--base-padding);
   padding-right: var(--base-padding);
   border-bottom: 1px solid lime;
+  border-left: 2px solid lime;
+  background: rgb(241, 245, 238);
+
   /* background: greenyellow; */
 }
+
 .replies h1 {
   color: var(--accent-color);
   font-size: 1rem;
@@ -208,6 +236,17 @@ p {
 .replies h1 span {
   color: gray;
   font-size: 0.75rem;
+}
+
+.thumbsup {
+  position: relative;
+  background: lime;
+  font-size: 25px;
+}
+.thumb {
+  position: absolute;
+  cursor: pointer;
+  /* background: lime; */
 }
 
 /* ____________ADD COMMENT_________________ */
@@ -231,7 +270,7 @@ p {
   overflow: auto;
 
   width: 100%;
-  min-height: 80px;
+  /* min-height: 80px; */
   padding: 15px 20px;
 }
 
