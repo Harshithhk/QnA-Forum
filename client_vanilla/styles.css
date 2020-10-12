@@ -11,9 +11,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-hr {
-  /* border-color: var(--accent-color); */
-}
 .headerss {
   display: flex;
   height: 52px;
