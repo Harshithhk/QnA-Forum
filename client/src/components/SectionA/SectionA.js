@@ -5,7 +5,6 @@ import { QuestionsContext } from '../../data/QuestionsContext'
 const SectionA = () => {
     const {questions} = useContext(QuestionsContext)
     return (
-     
         <div className="qna">
             <SemiHeader/>
             <section className="posts-area">

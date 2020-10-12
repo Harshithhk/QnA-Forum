@@ -18,6 +18,11 @@ const questionSchema = mongoose.Schema({
         required:true,
         default : 0
     },
+    noOfSubscribers:{
+        type:Number,
+        required: true,
+        default: 0
+    }
     
 },{
     timestamps: true

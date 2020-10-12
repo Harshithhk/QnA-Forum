@@ -3,7 +3,7 @@ import React from 'react'
 const Header = () => {
     return (
     <header className="headerss">
-        <h1>Mini Project</h1>     
+        <h1>Qna Forum</h1>     
             <ul>
                 <li className="activetab">Home</li>
                 <li className="incativetab2">About</li>
