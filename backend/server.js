@@ -1,24 +1,15 @@
-import express from 'express'
-import dotenv from 'dotenv'
-import connectDB from './config/db.js'
-import colors from 'colors'
-
-import questionRoutes from './routes/questionRoutes.js'
-
+const express = require ('express')
+const dotenv = require('dotenv')
 const app = express()
 
 dotenv.config()
-
-connectDB()
 
 app.get("/", (req,res)=>{
     res.send('HELLO FROM API')
 })
 
-app.use('/api/questions',questionRoutes)
-
 const PORT = process.env.PORT || 5000
 
 
 
-app.listen(PORT, console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.cyan.underline.bold))
+app.listen(PORT, console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`))
