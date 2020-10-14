@@ -12,7 +12,9 @@ const SectionA = () => {
                 {
                     questions.map((question)=>{
                         return(
-                             <Qna key={question._id} title={question.title} description={question.description} />
+                             <Qna key={question._id} title={question.title} description={question.description}
+                             image={question.image}
+                             noOfReplies={question.noOfReplies} />
                         )
                     })
                 }
