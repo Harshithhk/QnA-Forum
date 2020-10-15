@@ -15,7 +15,7 @@
 .headerss {
   display: flex;
   height: 52px;
-  width: 100vw;
+  width: 100%;
   z-index: 100;
   justify-content: space-between;
   align-items: center;
@@ -72,12 +72,11 @@
 
 /* __________________________________SECTION A_____________________________________ */
 .section-a {
-  width: 100vw;
+  width: 100%;
   height: calc(100vh - 3.5em);
   display: flex;
-  /* padding-left: var(--base-padding); */
   padding-right: var(--base-padding);
-  margin-top: var(--base-padding);
+  margin-top: calc(0.5 * var(--base-padding));
   font-family: "Montserrat", sans-serif;
 }
 

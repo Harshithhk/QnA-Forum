@@ -12,6 +12,7 @@ dotenv.config()
 connectDB()
 
 const importData = async()=>{
+    
     try{
         await User.deleteMany()
         await Question.deleteMany()

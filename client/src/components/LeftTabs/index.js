@@ -7,6 +7,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import HomeIcon from '@material-ui/icons/Home';
 import RecordVoiceOverIcon from '@material-ui/icons/RecordVoiceOver';
+import {Sticky} from "react-sticky"
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,11 +26,13 @@ export default function SimpleList() {
   const classes = useStyles();
 
   return (
+   
     <div className={classes.root}>
-      <List component="nav" aria-label="main mailbox folders">
+      <Sticky>{({ style }) =>( <div style={style}>
+      <List  component="nav" aria-label="main mailbox folders">
         <ListItem button selected>
           <ListItemIcon>
-            <HomeIcon />
+            <HomeIcon style={{color: 'gold'}}/>
           </ListItemIcon>
           <ListItemText primary="Open" />
         </ListItem>
@@ -48,6 +52,11 @@ export default function SimpleList() {
           <ListItemText primary="Spam" />
         </ListItemLink>
       </List>
+      </div>
+      )}
+      </Sticky>
+    
     </div>
+      
   );
 }

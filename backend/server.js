@@ -5,10 +5,14 @@ import colors from 'colors'
 import cors from 'cors'
 
 import questionRoutes from './routes/questionRoutes.js'
+import replyRoutes from './routes/replyRoutes.js'
+import bodyParser from 'body-parser'
 
 const app = express()
-
 dotenv.config()
+app.use(bodyParser.json()) // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true }))
+
 app.use(cors())
 
 connectDB()
@@ -18,6 +22,7 @@ app.get("/", (req,res)=>{
 })
 
 app.use('/api/questions',questionRoutes)
+app.use('/api/replies',replyRoutes)
 
 const PORT = process.env.PORT || 5000
 
