@@ -14,7 +14,8 @@ const SectionA = () => {
                         return(
                              <Qna key={question._id} title={question.title} description={question.description}
                              image={question.image}
-                             noOfReplies={question.noOfReplies} />
+                             noOfReplies={question.noOfReplies}
+                             id={question._id} />
                         )
                     })
                 }

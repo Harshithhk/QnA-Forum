@@ -6,11 +6,16 @@ import cors from 'cors'
 
 import questionRoutes from './routes/questionRoutes.js'
 import replyRoutes from './routes/replyRoutes.js'
+import userRoutes from './routes/userRoutes.js'
+
 import bodyParser from 'body-parser'
 
-const app = express()
 dotenv.config()
+
+const app = express()
+
 app.use(bodyParser.json()) // for parsing application/json
+
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(cors())
@@ -23,6 +28,7 @@ app.get("/", (req,res)=>{
 
 app.use('/api/questions',questionRoutes)
 app.use('/api/replies',replyRoutes)
+app.use('/api/users',userRoutes)
 
 const PORT = process.env.PORT || 5000
 

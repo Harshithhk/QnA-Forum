@@ -3,7 +3,9 @@ import dotenv from 'dotenv'
 import colors from 'colors'
 import users from './data/users.js'
 import questions from './data/questions.js'
+import replies from './data/replies.js'
 import User from './models/userModel.js'
+import Reply from './models/replyModel.js'
 import Question from './models/questionModel.js'
 import connectDB from './config/db.js'
 
@@ -32,6 +34,25 @@ const importData = async()=>{
         process.exit(1)
     }
 }
+// _______________________REPLY___________________
+
+const importReplyData = async()=>{
+    
+    try{
+        await Reply.deleteMany()
+        // await Question.deleteMany()
+        
+       
+        await Reply.insertMany(replies)
+
+        console.log('Reply Data Imported!'.green.inverse)
+        process.exit()
+    }
+    catch(error){
+        console.log(`${error}`.red.inverse)
+        process.exit(1)
+    }
+}
 
 
 const destroyData = async()=>{
@@ -50,6 +71,10 @@ const destroyData = async()=>{
 
 if(process.argv[2] == "-d"){
     destroyData()
-}else{
+}
+if(process.argv[2]== "-r"){
+    importReplyData()
+}
+else{
     importData()
 }

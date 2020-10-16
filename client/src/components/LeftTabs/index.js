@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
     maxWidth: 250,
+    // marginTop:'45px',
     backgroundColor: theme.palette.background.paper,
   },
 }));
@@ -28,34 +29,34 @@ export default function SimpleList() {
   return (
    
     <div className={classes.root}>
-      <Sticky>{({ style }) =>( <div style={style}>
-      <List  component="nav" aria-label="main mailbox folders">
-        <ListItem button selected>
-          <ListItemIcon>
-            <HomeIcon style={{color: 'gold'}}/>
-          </ListItemIcon>
-          <ListItemText primary="Open" />
-        </ListItem>
-        <ListItem button>
-          <ListItemIcon>
-            <RecordVoiceOverIcon />
-          </ListItemIcon>
-          <ListItemText primary="My Questions" />
-        </ListItem>
-      </List>
-      <Divider />
-      <List component="nav" aria-label="secondary mailbox folders">
-        <ListItem button>
-          <ListItemText primary="Trash" />
-        </ListItem>
-        <ListItemLink href="#simple-list">
-          <ListItemText primary="Spam" />
-        </ListItemLink>
-      </List>
-      </div>
+      <Sticky>{({ style }) =>( 
+        <div style={style}>
+          <List  component="nav" aria-label="main mailbox folders" style={{paddingTop: '0px'}}>
+            <ListItem button selected style={{borderRight:''}}>
+              <ListItemIcon>
+                <HomeIcon style={{color: 'gold'}}/>
+              </ListItemIcon>
+              <ListItemText primary="Open" />
+            </ListItem>
+            <ListItem button>
+              <ListItemIcon>
+                <RecordVoiceOverIcon />
+              </ListItemIcon>
+              <ListItemText primary="My Questions" />
+            </ListItem>
+          </List>
+          <Divider />
+          <List component="nav" aria-label="secondary mailbox folders">
+            <ListItem button>
+              <ListItemText primary="Trash" />
+            </ListItem>
+            <ListItemLink href="#simple-list">
+              <ListItemText primary="Spam" />
+            </ListItemLink>
+          </List>
+        </div>
       )}
       </Sticky>
-    
     </div>
       
   );

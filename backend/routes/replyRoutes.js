@@ -1,44 +1,14 @@
 import express from 'express'
-import asyncHandler from 'express-async-handler'
+import{
+    getReplies,
+    getRepliesById,
+    createReply
+} from '../controllers/replyController.js'
 const router = express.Router()
-import Reply from '../models/replyModel.js' 
 
 
-// @desc     Fetch single Replies
-// @route    GET /api/replies/:id
-// @access   Public
-router.get('/',async(req,res)=>{
-    const reply = Reply.find({})
-   
-    res.send({
-        user: 'SAMPLE',
-        question:'SAMPLE',
-        title: 'SAMPLE',
-        description:'SAMPLE',
-    })
-})
-
-router.get('/:id' ,asyncHandler(async(req,res)=>{
-  
-    const replies = await Reply.find({question: req.params.id})
-    
-    if(replies){
-        res.json(replies)
-    } else {
-         res.json([])
-    }
-}))
-
-router.post('/:id' ,asyncHandler(async(req,res)=>{
-
-    const {description,title,question}=req.body
-    const reply = new Reply({
-        question,
-        title,
-        description})
-    const replies = await reply.save()
-    res.status(201).json(replies)
-  
-}))
+router.route('/').get(getReplies)
+router.route('/:id').get(getRepliesById)
+router.route('/:id').post(createReply)
 
 export default router

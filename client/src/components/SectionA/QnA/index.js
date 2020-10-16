@@ -1,13 +1,12 @@
 import React, { useContext, useState } from 'react'
-import {AiOutlineStar} from 'react-icons/ai'
-import {AiFillStar} from 'react-icons/ai'
 import {BsFillCaretDownFill} from 'react-icons/bs'
 import questingImage from'../../../images/spectrum.jpg'
 import avatar from  '../../../images/avatar_user_2.jpg'
 import { QuestionsContext } from '../../../data/QuestionsContext'
+import Reply from './reply'
 
 
-const QnA = ({title,description,image,noOfReplies}) => {
+const QnA = ({title,description,image,noOfReplies,id}) => {
 
     const [toggleReplies,setToggleReplies] = useState(false)
 
@@ -16,7 +15,7 @@ const QnA = ({title,description,image,noOfReplies}) => {
         
         <div className="post">
                     <div className="post-header">
-    <a href="/#">{title}</a>
+                    <a href="/#">{title}</a>
                       <a href="/#">-@Harshith Kelkar</a>
                       <a href="/#"> @12:25pm 8-10-2020 </a>
                     </div>
@@ -30,12 +29,7 @@ const QnA = ({title,description,image,noOfReplies}) => {
                        {description}
                          </p>
                     </div>                   
-                    <div className="no-of-replies" onClick={()=>{setToggleReplies(!toggleReplies) 
-                        window.scrollTo({
-                            top:window.pageYOffset+300,
-                            behavior:'smooth'
-                        })
-                        }}>
+                    <div className="no-of-replies" onClick={()=>{setToggleReplies(!toggleReplies) }}>
                         <p>{noOfReplies} replies</p>
                         <i className="downarrow"><BsFillCaretDownFill/></i>
                     </div> 
@@ -55,32 +49,7 @@ const QnA = ({title,description,image,noOfReplies}) => {
 
 {/* _______________REPLIES_______________ */}
             { toggleReplies &&
-            <section className="hiddenreply">
-                <div className="replies">
-                        <div>
-                        <h1>-@John Doe <span>@1:45pm 10-10-2020</span></h1>
-                        <p> <span className="b"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat autem odit repellendus?</span> <br/> Laborum provident adipisci itaque reprehenderit officiis <br/> cumque praesentium repudiandae laboriosam, eos inventore error maxime blanditiis quis numquam Quasi iusto, esse totam error atque possimus debitis quaerat eos minima aspernatur, facere non laboriosam eius, fugiat obcaecati? Ratione eos perspiciatis molestias placeat necessitatibus fuga. Ipsam delectus laudantium, pariatur obcaecati veritatis dolorem ipsum dignissimos quod aut soluta rerum asperiores quidem voluptatem?</p>
-                        </div>
-                        <div className="thumbsup" name="name123">
-                            <i className="thumb" id="3"><AiOutlineStar/></i>
-                        </div>
-                    
-                    </div>
-                    <div className="replies">
-                        <div>
-                        <h1>-@Whatsmy Name <span>@3:45pm 9-10-2020</span></h1>
-                        <p> <span className="b">  consectetur adipisicing elit. Fugiat autem odit repellendus?</span> <br/> Laborum provident
-                            adipisci itaque reprehenderit officiis <br/> cumque praesentium repudiandae laboriosam, eos inventore error
-                            maxime blapsum dignissimos quod aut
-                            soluta rerum asperiores quidem voluptatem?</p>
-                            </div>
-                            <div className="thumbsup">
-                                <i className=" thumb"><AiFillStar/></i>
-                            </div>
-
-                    </div>
-                  
-                </section>
+                <Reply id={id}/>
     }
                 </div>
 

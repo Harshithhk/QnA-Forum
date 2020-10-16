@@ -177,7 +177,7 @@
 .post-image img {
   /* display: none; */
   max-width: 70%;
-  min-width: 70%;
+  /* min-width: 50%; */
 }
 @media only screen and (max-width: 1200px) {
   .post-image img {
@@ -191,6 +191,15 @@
   width: 100%;
 }
 /* ______________________________REPLIES____________________________ */
+
+.reply-loader {
+  height: 300px;
+  width: 100%;
+  background-color: var(--primary-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .no-of-replies {
   position: relative;
   cursor: pointer;
