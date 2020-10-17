@@ -1,9 +1,7 @@
 import jwt from 'jsonwebtoken'
 import asyncHandler from 'express-async-handler'
-import User from '../models/userModel.js'
 
-const protect =asyncHandler(async(req,res,next)=>{
-    console.log("authmiddle")
+const tokenValidation = asyncHandler(async(req,res)=>{
     let token
 
     if(req.headers.authorization && req.headers.authorization.startsWith('Bearer')){
@@ -12,21 +10,26 @@ const protect =asyncHandler(async(req,res,next)=>{
 
             const decoded = jwt.verify(token,process.env.JWT_SECRET)
 
-            req.user = await User.findById(decoded.id).select('-password')
+            if(!decoded){ 
+                return res.json(false)
+            }
 
-            next()
+            const user = await User.findById(decoded.id)
+            if(!user){
+                return res.json(false)
+            }
+
+            return res.json(true)
+
+          
         }catch(error){
-            console.log(error)
-            res.status(401)
-            throw new Error('Not Authorized, token failed')
+            res.status(500).json({error: error.message});
         }
     }
 
     if(!token){
         res.status(401)
-        throw new Error('Not authorized,no token')
 
     }
 })
-
-export {protect}
+export {tokenValidation}
