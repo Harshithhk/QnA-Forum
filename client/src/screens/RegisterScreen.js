@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useContext} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,6 +12,10 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+
+import axios from 'axios';
+import UserContext from '../data/UserContext'
+import {useHistory} from 'react-router-dom'
 
 function Copyright() {
   return (
@@ -79,10 +83,31 @@ export default function RegisterScreen() {
 
  }
 //  ______________SUBMIT______________
+const {setUserData}= useContext(UserContext)
+const history = useHistory()
+const handleSubmit = async(e) =>{
 
-const handleSubmit = (e) =>{
-  console.log(e)
-  e.preventDefault()
+ e.preventDefault()
+  try{
+  const registerData = await axios.post(`http://localhost:5000/api/users/`,{
+    name: `${firstName} ${lastName}`,
+    email: email,
+    password: password
+  })
+  setUserData({
+     _id: registerData.data._id,
+    name: registerData.data.name,
+    email: registerData.data.email,
+    isAdmin:registerData.data.isAdmin
+  })
+  localStorage.setItem('auth-token',`Bearer ${registerData.data.token}`)
+  history.push('/')
+  console.log('REGISTRATION SUCCESSFUL')
+}catch(err){
+  console.log(err)
+  console.log('REGISTRATION FAILED')
+}
+ 
 }
 
   return (

@@ -6,10 +6,11 @@ import UserContext from './data/UserContext'
 import HomeScreen from './screens/HomeScreen'
 import Header from './components/header'
 import RegisterScreen from './screens/RegisterScreen'
+import LoginScreen from './screens/LoginScreen'
 
 import {
   BrowserRouter as Router,
-  Route
+  Route,Switch
 } from "react-router-dom";
 
 
@@ -25,8 +26,12 @@ function App() {
         localStorage.setItem("auth-token","")
         token = ""
       }
-
+     
       const tokenRes = await axios.post(`http://localhost:5000/tokenIsValid`,null,{headers:{"authorization": token}})
+      if(!tokenRes.data){
+        console.log("LOGIN FAILED")
+        localStorage.setItem('auth-token','')
+      }
 
       if(tokenRes.data){
         const userRes= await axios.get("http://localhost:5000/api/users/profile",{headers : {"authorization": token}})
@@ -34,6 +39,7 @@ function App() {
         setUserData(userRes.data)
         console.log("LOGGED IN")
       }
+    
     }
 
     checkLoggedIn()
@@ -43,9 +49,12 @@ function App() {
     <div className="App">
       <Router>
         <UserContext.Provider value ={{userData,setUserData}}>
-          <Route exact path='/register' component={RegisterScreen}/>
-          <Route exact path = '/' ><Header/><HomeScreen/></Route>
-          
+          <Header/>
+          <Switch>
+            <Route exact path = '/' component={HomeScreen} />
+            <Route exact path='/register' component={RegisterScreen}/>
+            <Route exact path='/login' component={LoginScreen}/>
+          </Switch>
       </UserContext.Provider>>
       </Router>
     </div>

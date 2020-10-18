@@ -1,5 +1,5 @@
 import React,{useContext} from 'react'
-import {useHistory} from 'react-router-dom'
+import {useHistory,Link} from 'react-router-dom'
 import UserContext from '../../data/UserContext'
 // import styles from './header.module.css'
 const Header = () => {
@@ -17,7 +17,7 @@ const Header = () => {
 
     return (
     <header className="headerss">
-        <h1>Qna Forum</h1>     
+        <Link to="/" style={{ textDecoration: 'none' }}><h1>Qna Forum</h1></Link>     
             <ul>
                 <li className="activetab">Home</li>
                 <li className="incativetab2">About</li>
