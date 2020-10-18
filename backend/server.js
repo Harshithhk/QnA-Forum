@@ -29,24 +29,7 @@ app.get("/", (req,res)=>{
     res.send('HELLO FROM API')
 })
 
-app.post("/tokenIsValid",async(req,res)=>{
-    console.log("DEBUG")
-    try{
-    var token = req.header("authorization");
-    if(!token) return res.json(false);
-    token = token.split(' ')[1]
-
-    const verified = jwt.verify(token,process.env.JWT_SECRET)
-    if(!verified) return res.json(false);
-
-    const user = await User.findById(verified.id);
-    if(!user) return res.json(false);
-
-    return res.json(true);
-    } catch(err){
-        res.status(500).json({error: err.message})
-    }
-})
+app.post("/tokenIsValid",tokenValidation)
 
 app.use('/api/questions',questionRoutes)
 app.use('/api/replies',replyRoutes)

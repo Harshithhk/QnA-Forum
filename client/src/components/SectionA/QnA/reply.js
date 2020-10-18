@@ -12,8 +12,8 @@ const Reply = ({id}) => {
     const fetchReplies =async(id)=>{    
         try{
             setLoading(true)
-             var Data = await axios.get(`http://localhost:5000/api/replies/${id}`)
-
+             const Data = await axios.get(`http://localhost:5000/api/replies/${id}`)
+             console.log(Data)
              setReplies(Data)
              setLoading(false)
              
@@ -21,7 +21,7 @@ const Reply = ({id}) => {
                             top:window.pageYOffset+300,
                             behavior:'smooth'
                         })
-                console.log(Data)
+               
         }catch(err){
             setLoading(false)
                 console.log(err)

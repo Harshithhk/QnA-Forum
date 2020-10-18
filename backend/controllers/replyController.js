@@ -1,4 +1,5 @@
 import asyncHandler from 'express-async-handler'
+import mongoose from 'mongoose'
 import Reply from '../models/replyModel.js'
 
 // @desc     Fetch all Replies
@@ -13,13 +14,13 @@ const getReplies = asyncHandler(async(req,res)=>{
 // @route    GET /api/replies/:id
 // @access   Public
 const getRepliesById = asyncHandler(async(req,res)=>{
-  
-    const replies = await Reply.find({question: req.params.id})
 
+    const replies = await Reply.find({question:req.params.id})
+    
     if(replies){
         res.json(replies)
     } else {
-         res.json([])
+        res.status(404)
     }
 })
 

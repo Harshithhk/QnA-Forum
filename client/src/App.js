@@ -1,22 +1,21 @@
 import React,{useState,useEffect} from 'react';
 import axios from 'axios'
-import HomeScreen from './screens/HomeScreen'
-import Header from './components/header'
 import './App.css';
 import UserContext from './data/UserContext'
 
+import HomeScreen from './screens/HomeScreen'
+import Header from './components/header'
+import RegisterScreen from './screens/RegisterScreen'
+
 import {
   BrowserRouter as Router,
-  
+  Route
 } from "react-router-dom";
 
 
 function App() {
 
-  const [userData,setUserData] = useState({
-    token: undefined,
-    user: undefined,
-  })
+  const [userData,setUserData] = useState(undefined)
 
   useEffect(()=>{
     const checkLoggedIn = async()=>{
@@ -44,8 +43,9 @@ function App() {
     <div className="App">
       <Router>
         <UserContext.Provider value ={{userData,setUserData}}>
-          <Header/>
-          <HomeScreen/>
+          <Route exact path='/register' component={RegisterScreen}/>
+          <Route exact path = '/' ><Header/><HomeScreen/></Route>
+          
       </UserContext.Provider>>
       </Router>
     </div>

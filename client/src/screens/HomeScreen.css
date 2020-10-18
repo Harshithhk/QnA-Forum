@@ -114,12 +114,6 @@
   color: var(--accent-color);
 }
 
-.profile {
-  width: 25%;
-  height: 100%;
-  /* background-color: rgb(245, 126, 126); */
-}
-
 /* ________________________________________POST___________________________________ */
 
 .posts-area {
