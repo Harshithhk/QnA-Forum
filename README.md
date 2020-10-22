@@ -3,6 +3,10 @@
 
 In the project directory, you can run the following script in both client and backend(server folder):
 
+### `npm install`
+
+Installs dependancies
+
 ### `npm start`
 
 Runs the app in the development mode.<br /><br/>
