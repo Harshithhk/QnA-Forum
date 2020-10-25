@@ -8,6 +8,7 @@ const tokenValidation = asyncHandler(async(req,res)=>{
     
     if(!token) return res.json(false);
     token = token.split(' ')[1]
+    console.log(token)
     
     const verified = jwt.verify(token,process.env.JWT_SECRET)
     if(!verified) return res.json(false);

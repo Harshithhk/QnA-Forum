@@ -66,6 +66,7 @@ const handleLogin=async(e)=>{
           email,
           password
       })
+      resData.data.token=`Bearer ${resData.data.token}`
       localStorage.setItem('auth-token',resData.data.token)
       setUserData(resData.data)
       history.push('/')
