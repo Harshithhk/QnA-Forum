@@ -27,6 +27,11 @@ const userSchema = mongoose.Schema({
         type:Number,
         required:true,
         default: 0
+    },
+    likes:{
+        type:[mongoose.Schema.Types.ObjectId],
+        required:true,
+        default: 0
     }   
 },{
     timestamps: true
