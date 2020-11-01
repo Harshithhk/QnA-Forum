@@ -3,8 +3,10 @@ import {AiOutlineStar} from 'react-icons/ai'
 import {AiFillStar} from 'react-icons/ai'
 import axios from 'axios'
 import UserContext from '../../../data/UserContext'
+import {useHistory} from 'react-router-dom'
 
 const Reply = ({id}) => {
+    const history = useHistory()
 
     const {userData , setUserData} = useContext(UserContext)
     // const debug = userData.likes.includes(id);
@@ -34,6 +36,9 @@ const Reply = ({id}) => {
     useEffect(()=>{
         fetchReplies(id)
         console.log(userData)
+        if(!userData){
+            history.push("/login")
+        }
         return()=>{
             window.scrollTo({
                             top:window.pageYOffset-300,

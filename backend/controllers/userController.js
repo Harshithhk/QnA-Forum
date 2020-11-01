@@ -16,6 +16,7 @@ const authUser =asyncHandler(async(req,res)=>{
             user:user.name,
             email:user.email,
             isAdmin:user.isAdmin,
+            likes: user.likes,
             token:generateToken(user._id),
         })
     } else {
