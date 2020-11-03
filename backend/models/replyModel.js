@@ -28,6 +28,11 @@ const replySchema = mongoose.Schema({
     image:{
         type:String,
         default: ""
+    },
+    trophies:{
+        type:[String],
+        required:true,
+        default:[]
     }
     
 },{

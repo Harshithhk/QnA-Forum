@@ -1,5 +1,6 @@
 import React, { useEffect, useState,useContext } from 'react'
 import {AiOutlineStar} from 'react-icons/ai'
+import {BsTrophy} from 'react-icons/bs'
 import {AiFillStar} from 'react-icons/ai'
 import axios from 'axios'
 import UserContext from '../../../data/UserContext'
@@ -96,33 +97,53 @@ const Reply = ({id}) => {
     }
         
     }
+
+// TESTING______________________________________________________
+        const [op, setOp] = useState(0.3)
+        const likeH = ()=>{
+            if(op === 0.3){
+            setOp(1)
+            }else{
+                setOp(0.3)
+            }
+        }
     
     return (
         <section className="hiddenreply">
             {loading && <div className="reply-loader"><h1>loading...</h1></div>}
             {replies.data.map((reply)=>{
                 return(
-                    <div className="replies">
+                    <div className="replies" key ={reply._id}>
                         <div>
-                            <h1>-@John Doe <span>@1:45pm 10-10-2020</span></h1>
-                            <p> <span className="b">{reply.title}</span>{reply.description}</p>
-                        </div>
-                        <div className="thumbsup" name="name123" onClick={()=>likeHandler(reply._id)}>
-                            <i className="thumb" id="3">
-                             {
-                             userData.likes.includes(reply._id)?
-                                    <AiFillStar/>
-                                    :
-                                    <AiOutlineStar/>
-                             }    
-                            
-                                </i>
-                                {reply.noOfLikes !== 0 &&
-                                <div className="nolikes">{reply.noOfLikes}</div>
-                            }
-                            
-                        </div>
-                    
+                            <div style={{display:"flex", alignItems:"center",justifyContent:"space-between"}}>
+
+                                <h1>-@John Doe <span>@1:45pm 10-10-2020</span></h1>
+
+                                <span style={{display:"flex", alignItems:"center",fontSize:"18px"}}>
+                                    <div style={{display:"flex",justifyContent:"center",alignItems:"center"}} onClick={()=>likeHandler(reply._id)}>
+                                    {reply.trophies.length !== 0 &&
+                                <div style={{fontSize:"15px",marginLeft:"2px",fontWeight:"bold",display:"flex",justifyContent:"center",alignItems:"center",marginRight:"10px"}}>
+                                    <div style={{background:`rgba(220,20,60,0.8)`,color:"white",padding:"2px",paddingRight:"4px",paddingLeft:"4px",display:"flex",alignItems:"center",justifyContent:"center"}}>
+                                    <BsTrophy style={{color:"yellow", fontSize:"18px"}}/>
+                                    </div>
+                                    <span style={{fontSize:"15px",marginLeft:"2px",fontWeight:"bold"}}>{reply.trophies.length+1}</span></div>}
+                                        {
+                                        userData.likes.includes(reply._id)?
+                                        <div style={{background:`rgba(220,20,60,1)`,color:"white",padding:"2px",display:"flex",alignItems:"center",justifyContent:"center"}}>
+                                        <AiFillStar />
+                                        </div>:
+                                        <div style={{background:`rgba(220,20,60,0.3)`,color:"white",padding:"2px",display:"flex",alignItems:"center",justifyContent:"center"}}>
+                                        <AiFillStar />
+                                        </div>
+                                        }
+                                    </div>
+                                    {reply.noOfLikes == 0 &&
+                                <div style={{fontSize:"15px",marginLeft:"2px",fontWeight:"bold"}}>{reply.noOfLikes}3</div>}
+                                </span>
+
+                            </div>
+                            <p> <span className="b">{reply.title}</span>{reply.description}</p>  
+                        </div>                  
                     </div>
                 )
             })}   
@@ -131,3 +152,28 @@ const Reply = ({id}) => {
 }
 
 export default Reply
+
+
+
+    // <div className="replies">
+    //                     <div>
+    //                         <h1>-@John Doe <span>@1:45pm 10-10-2020</span></h1>
+    //                         <p> <span className="b">{reply.title}</span>{reply.description}</p>
+    //                     </div>
+    //                     <div className="thumbsup" name="name123" onClick={()=>likeHandler(reply._id)}>
+    //                         <i className="thumb" id="3">
+    //                          {
+    //                          userData.likes.includes(reply._id)?
+    //                                 <AiFillStar/>
+    //                                 :
+    //                                 <AiOutlineStar/>
+    //                          }    
+                            
+    //                             </i>
+    //                             {reply.noOfLikes !== 0 &&
+    //                             <div className="nolikes">{reply.noOfLikes}</div>
+    //                         }
+                            
+    //                     </div>
+                    
+    //                 </div>

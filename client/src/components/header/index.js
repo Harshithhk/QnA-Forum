@@ -6,13 +6,14 @@ const Header = () => {
 
     const {userData , setUserData} = useContext(UserContext)
 
-    const history = useHistory();
+    const history = useHistory()
 
     const register = ()=> history.push('/register')
     const login = ()=> history.push('/login')
     const logout = ()=>{
         setUserData(undefined)
         localStorage.setItem("auth-token","")
+        history.push('/login')
     }
 
     return (

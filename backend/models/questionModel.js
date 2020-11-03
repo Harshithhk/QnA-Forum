@@ -18,10 +18,10 @@ const questionSchema = mongoose.Schema({
         required:true,
         default : 0
     },
-    noOfSubscribers:{
-        type:Number,
-        required: true,
-        default: 0
+    Subscribers:{
+        type:mongoose.Schema.Types.ObjectId,
+        required: false,
+        ref: 'User',
     },
     image:{
         type:Boolean,

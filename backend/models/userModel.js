@@ -32,6 +32,11 @@ const userSchema = mongoose.Schema({
         type:[mongoose.Schema.Types.ObjectId],
         required:true,
         default: 0
+    },
+    questionSubscriptions:{
+        type:[String],
+        required:true,
+        default:[]
     }   
 },{
     timestamps: true

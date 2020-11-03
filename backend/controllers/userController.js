@@ -16,8 +16,9 @@ const authUser =asyncHandler(async(req,res)=>{
             user:user.name,
             email:user.email,
             isAdmin:user.isAdmin,
-            likes: user.likes,
             token:generateToken(user._id),
+            likes: user.likes,
+            questionSubscriptions:user.questionSubscriptions,
         })
     } else {
         res.status(401)
@@ -47,11 +48,13 @@ const registerUser =asyncHandler(async(req,res)=>{
 
     if(user){
         res.status(201).json({
-            _id:user.id,
-            name:user.name,
+            _id: user._id,
+            user:user.name,
             email:user.email,
-            isAdmin: user.isAdmin,
-            token: generateToken(user._id)
+            isAdmin:user.isAdmin,
+            token:generateToken(user._id),
+            likes: user.likes,
+            questionSubscriptions:user.questionSubscriptions,
         })
     }else{
         res.status(400)
@@ -75,6 +78,7 @@ const getUserProfile =asyncHandler(async(req,res)=>{
         email: user.email,
         isAdmin: user.isAdmin,
         likes:user.likes,
+        questionSubscriptions: user.questionSubscriptions,
     })
    }else{
        res.status(404)
@@ -97,6 +101,7 @@ const updateUserProfile =asyncHandler(async(req,res)=>{
             user.password = req.body.password
         }
         user.likes = req.body.likes || user.likes
+        user.questionSubscriptions = req.body.questionSubscriptions || user.questionSubscriptions
 
         const updatedUser = await user.save()
 
