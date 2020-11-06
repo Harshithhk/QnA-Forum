@@ -10,15 +10,37 @@
 .profile {
   width: 25%;
   height: 100%;
-  /* background-color: rgb(245, 126, 126); */
+  font-family: "Montserrat", sans-serif;
+  /* background-color: rgb(235, 217, 217); */
   padding-left: calc(0.25 * var(--base-padding));
-  padding-top: calc(0.25 * var(--base-padding));
+  /* padding-top: calc(0.25 * var(--base-padding)); */
 }
 .avatar {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  /* background-image: url(../../images/avatar_user_2.jpg); */
+  width: 50px;
+  height: 50px;
+  /* border-radius: 50%; */
+  border: 1px solid crimson;
+  background-image: url(../../images/avatar_user_2.jpg);
   background-position: center;
   background-size: cover;
+}
+
+.ul li {
+  background-color: rgb(255, 242, 245);
+  background-color: rgb(208, 253, 253);
+
+  margin-bottom: 1px;
+  min-height: 3rem;
+  max-height: fit-content;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  line-height: 1px;
+  padding-left: calc(0.25 * var(--base-padding));
+  font-size: 0.95rem;
+}
+.ul {
+  /* background-color: lightcoral; */
+  /* margin-bottom: 10rem; */
+  border-bottom: 1px solid lightblue;
 }

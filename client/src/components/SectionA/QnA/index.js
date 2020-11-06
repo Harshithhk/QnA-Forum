@@ -1,4 +1,4 @@
-import React, { useContext, useState,Suspense } from 'react'
+import React, { useContext, useState,Suspense, useEffect } from 'react'
 import {BsFillCaretDownFill} from 'react-icons/bs'
 import questingImage from'../../../images/spectrum.jpg'
 import avatar from  '../../../images/avatar_user_2.jpg'
@@ -15,10 +15,12 @@ const Reply = React.lazy(()=> import('./reply'))
 
 
 
-const QnA = ({title,description,image,noOfReplies,id}) => {
+const QnA = ({title,description,image,noOfReplies,id,match}) => {
 
     const [toggleReplies,setToggleReplies] = useState(false)
     const {userData , setUserData} = useContext(UserContext)
+
+    
 
 
     

@@ -52,6 +52,7 @@ function App() {
           <Header/>
           <Switch>
             <Route exact path = '/' component={HomeScreen} />
+            <Route exact path = '/myquestions' component={HomeScreen} />
             <Route exact path='/register' component={RegisterScreen}/>
             <Route exact path='/login' component={LoginScreen}/>
           </Switch>

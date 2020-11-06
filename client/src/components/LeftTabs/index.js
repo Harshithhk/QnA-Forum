@@ -8,6 +8,7 @@ import Divider from '@material-ui/core/Divider';
 import HomeIcon from '@material-ui/icons/Home';
 import RecordVoiceOverIcon from '@material-ui/icons/RecordVoiceOver';
 import {Sticky} from "react-sticky"
+import { Link } from 'react-router-dom';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -38,12 +39,14 @@ export default function SimpleList() {
               </ListItemIcon>
               <ListItemText primary="Open" />
             </ListItem>
-            <ListItem button>
+            {/* <Link style={{ textDecoration: 'none' }}> */}
+            <ListItem button component={Link} to={'myquestions'}>
               <ListItemIcon>
                 <RecordVoiceOverIcon />
               </ListItemIcon>
               <ListItemText primary="My Questions" />
             </ListItem>
+            {/* </Link> */}
           </List>
           <Divider />
           <List component="nav" aria-label="secondary mailbox folders">
