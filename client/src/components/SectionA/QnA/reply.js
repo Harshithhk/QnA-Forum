@@ -6,13 +6,13 @@ import axios from 'axios'
 import UserContext from '../../../data/UserContext'
 import {useHistory} from 'react-router-dom'
 
-const Reply = ({id}) => {
+const Reply = ({id,replies,setReplies}) => {
     const history = useHistory()
 
     const {userData , setUserData} = useContext(UserContext)
     // const debug = userData.likes.includes(id);
     
-    const [replies,setReplies]=useState({data:[]})
+    
     const [loading, setLoading] = useState(false)
     // const [likeLoading, setLikeLoading] = useState(false)
 

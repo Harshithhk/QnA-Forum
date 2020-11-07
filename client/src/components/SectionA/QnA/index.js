@@ -21,6 +21,7 @@ const QnA = ({title,description,image,noOfReplies,id,match}) => {
 
     const [toggleReplies,setToggleReplies] = useState(false)
     const {userData , setUserData} = useContext(UserContext)
+    const [replies,setReplies]=useState({data:[]})
 
     
 
@@ -82,6 +83,10 @@ const handleSubscription =async(id)=>{
 
         const res = await axios.post('http://localhost:5000/api/replies/',{title:'',description:replyData,question:id},{headers:{"authorization": token}})
         console.log(res)
+        setReplyData(``)
+        var temp = replies.data
+        setReplies({data:[...temp,res.data]})
+        
         }catch(err){
             console.log(err)
         }
@@ -124,7 +129,7 @@ const handleSubscription =async(id)=>{
 
                 <div className="write-new">
                     <form>
-                        <textarea placeholder="Write your comment here" name="comment" onChange={handleReply}></textarea>
+                        <textarea placeholder="Write your comment here" name="comment" onChange={handleReply} value={replyData}></textarea>
                         <div> 
                         <img src={avatar}width="35" alt="Profile of Bradley Jones" title="Bradley Jones" />
                         <button onClick={replySubmission}>Submit</button>
@@ -138,7 +143,7 @@ const handleSubscription =async(id)=>{
 {/* _______________REPLIES_______________ */}
             { toggleReplies &&
             <Suspense fallback={<div></div>}>
-                <Reply id={id}/>
+                <Reply id={id} replies={replies} setReplies={setReplies}/>
             </Suspense>
             }
         </div>

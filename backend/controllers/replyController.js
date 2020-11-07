@@ -33,7 +33,7 @@ const createReply = asyncHandler(asyncHandler(async(req,res)=>{
     try{
     const reply = new Reply({
         question,
-        title:title || "lol",
+        title:title || "A:",
         user:req.user._id,
         userName:req.user.name,
         description})
