@@ -6,7 +6,7 @@ import axios from 'axios'
 import UserContext from '../../../data/UserContext'
 import {useHistory} from 'react-router-dom'
 
-const Reply = ({id,replies,setReplies}) => {
+const Reply = ({id,replies,setReplies,setToggleReplies}) => {
     const history = useHistory()
 
     const {userData , setUserData} = useContext(UserContext)
@@ -16,16 +16,23 @@ const Reply = ({id,replies,setReplies}) => {
     const [loading, setLoading] = useState(false)
     // const [likeLoading, setLikeLoading] = useState(false)
 
+    var pageOffset=300
     const fetchReplies =async(id)=>{    
         try{
+            
             setLoading(true)
              const Data = await axios.get(`http://localhost:5000/api/replies/${id}`)
+             if(Data.data.length == 0){
+                 pageOffset=0
+                setToggleReplies(false)
+             }
+             console.log(`DATA`)
              console.log(Data)
              setReplies(Data)
              setLoading(false)
              
               window.scrollTo({
-                            top:window.pageYOffset+300,
+                            top:window.pageYOffset+pageOffset,
                             behavior:'smooth'
                         })
                
@@ -42,7 +49,7 @@ const Reply = ({id,replies,setReplies}) => {
         }
         return()=>{
             window.scrollTo({
-                            top:window.pageYOffset-300,
+                            top:window.pageYOffset-pageOffset,
                             behavior:'smooth'
                         })
         }

@@ -143,7 +143,7 @@ const handleSubscription =async(id)=>{
 {/* _______________REPLIES_______________ */}
             { toggleReplies &&
             <Suspense fallback={<div></div>}>
-                <Reply id={id} replies={replies} setReplies={setReplies}/>
+                <Reply id={id} replies={replies} setReplies={setReplies} setToggleReplies={setToggleReplies}/>
             </Suspense>
             }
         </div>
