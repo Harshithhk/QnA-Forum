@@ -1,15 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from './SideProfile.module.css'
 import avatar from '../../images/avatar_user_2.jpg'
 import {BsTrophy} from 'react-icons/bs'
 import {AiFillStar} from 'react-icons/ai'
+import UserContext from '../../data/UserContext'
 
 const SideProfile = () => {
+
+    const {userData , setUserData} = useContext(UserContext)
+
     return (
         <div className={styles.profile}>
             <div style={{display:"flex",alignItems:"center",borderBottom: "0.5px solid lightgray"}}>
             <div className={styles.avatar}></div>
-            <h1 style={{marginLeft:"5px",fontSize:"2rem"}}>Harshith Kelkar</h1>
+            {userData &&
+            <h1 style={{marginLeft:"5px",fontSize:"2rem"}}>{userData.name}</h1>}
             </div>
             
             <div style={{background:"",height:"2rem", display:"flex",justifyContent:"space-between",alignItems:"center",marginTop:"0.5rem",padding:"0.5rem",marginTop:"30px"}}> <h3>Ratings Earned</h3><div></div></div>

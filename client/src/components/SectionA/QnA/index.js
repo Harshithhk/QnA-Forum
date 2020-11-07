@@ -65,7 +65,29 @@ const handleSubscription =async(id)=>{
         }
         }
     
-}
+    }
+
+    // _________REPLY SUBMISSION_____________
+    const[replyData ,setReplyData]=useState(``)
+    const handleReply=(e)=>{
+        setReplyData(e.target.value)
+        console.log(e.target.value)
+    }
+
+    const replySubmission =async(e)=>{
+        e.preventDefault()
+        
+        try{
+        let token = localStorage.getItem("auth-token")
+
+        const res = await axios.post('http://localhost:5000/api/replies/',{title:'',description:replyData,question:id},{headers:{"authorization": token}})
+        console.log(res)
+        }catch(err){
+            console.log(err)
+        }
+        
+        console.log(replyData)
+    }
 
 
 
@@ -101,11 +123,11 @@ const handleSubscription =async(id)=>{
                 </div> 
 
                 <div className="write-new">
-                    <form action="#" method="post">
-                        <textarea placeholder="Write your comment here" name="comment"></textarea>
+                    <form>
+                        <textarea placeholder="Write your comment here" name="comment" onChange={handleReply}></textarea>
                         <div> 
                         <img src={avatar}width="35" alt="Profile of Bradley Jones" title="Bradley Jones" />
-                        <button type="submit">Submit</button>
+                        <button onClick={replySubmission}>Submit</button>
                         </div>  
 
                     </form>

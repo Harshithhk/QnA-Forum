@@ -16,24 +16,10 @@ const getReplies = asyncHandler(async(req,res)=>{
 // @access   Public
 const getRepliesById = asyncHandler(async(req,res)=>{
 
-    var replies = await Reply.find({question:req.params.id})
-    console.log(replies)
-//     replies.forEach(async(r)=>{
-//         try {
-//             var username = await User.find({ _id: r.user })
-//             r.userName = username.name
-//             console.log(username.name)
-//         } catch (err) {
-//             console.log(err)
-//         }
-//    })
-        
-
-   
-    
+    var replies = await Reply.find({question:req.params.id})    
     if(replies){
         res.json(replies)
-        console.log(`idk${replies}`)
+        // console.log(`idk${replies}`)
     } else {
         res.status(404)
     }
@@ -43,13 +29,20 @@ const getRepliesById = asyncHandler(async(req,res)=>{
 // @route    POST /api/replies/
 // @access   Public
 const createReply = asyncHandler(asyncHandler(async(req,res)=>{
-    const {description,title,question}=req.body
+    const {description,title,question,user}=req.body
+    try{
     const reply = new Reply({
         question,
-        title,
+        title:title || "lol",
+        user:req.user._id,
+        userName:req.user.name,
         description})
     const replies = await reply.save()
     res.status(201).json(replies)
+    }catch(err){
+        res.send(err)
+        console.log(err)
+    }
   
 }))
 

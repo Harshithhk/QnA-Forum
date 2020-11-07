@@ -114,7 +114,7 @@ const Reply = ({id}) => {
             {replies.data.map((reply)=>{
                 return(
                     <div className="replies" key ={reply._id}>
-                        <div>
+                        <div style={{width:"100%"}}>
                             <div style={{display:"flex", alignItems:"center",justifyContent:"space-between"}}>
 
                                 <h1>-@{reply.userName} <span>@1:45pm 10-10-2020</span></h1>
