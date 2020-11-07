@@ -2,11 +2,14 @@ import express from 'express'
 const router = express.Router()
 import {
     getQuestions,
-    getQuestionById
+    getQuestionById,
+    createQuestion
 } from '../controllers/questionController.js'
+import {protect} from '../middleware/authMiddleware.js'
 
 
-router.route('/').get(getQuestions)
+
+router.route('/').get(getQuestions).post(protect,createQuestion)
 router.route('/:id').get(getQuestionById)
 
 

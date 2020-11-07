@@ -11,14 +11,11 @@
   width: 25%;
   height: 100%;
   font-family: "Montserrat", sans-serif;
-  /* background-color: rgb(235, 217, 217); */
   padding-left: calc(0.25 * var(--base-padding));
-  /* padding-top: calc(0.25 * var(--base-padding)); */
 }
 .avatar {
-  width: 50px;
-  height: 50px;
-  /* border-radius: 50%; */
+  width: 45px;
+  height: 45px;
   border: 1px solid crimson;
   background-image: url(../../images/avatar_user_2.jpg);
   background-position: center;
@@ -27,7 +24,7 @@
 
 .ul li {
   background-color: rgb(255, 242, 245);
-  background-color: rgb(208, 253, 253);
+  background-color: rgb(221, 253, 253);
 
   margin-bottom: 1px;
   min-height: 3rem;
@@ -38,9 +35,12 @@
   line-height: 1px;
   padding-left: calc(0.25 * var(--base-padding));
   font-size: 0.95rem;
+  color: rgb(68, 68, 68);
+}
+.ul li:hover {
+  cursor: pointer;
+  background-color: rgb(201, 252, 252);
 }
 .ul {
-  /* background-color: lightcoral; */
-  /* margin-bottom: 10rem; */
   border-bottom: 1px solid lightblue;
 }

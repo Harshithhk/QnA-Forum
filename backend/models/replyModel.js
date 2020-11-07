@@ -1,11 +1,15 @@
 import mongoose from 'mongoose'
 
 const replySchema = mongoose.Schema({
-    // user:{
-    //     type:mongoose.Schema.Types.ObjectId,
-    //     required: true,
-    //     ref: 'User',
-    // },
+    user:{
+        type:String,
+        required: true,
+    },
+    userName:{
+        type:String,
+        required:true,
+        default:'anonymous'
+    },
     question:{
         type:mongoose.Schema.Types.ObjectId,
         required:true,

@@ -117,7 +117,7 @@ const Reply = ({id}) => {
                         <div>
                             <div style={{display:"flex", alignItems:"center",justifyContent:"space-between"}}>
 
-                                <h1>-@John Doe <span>@1:45pm 10-10-2020</span></h1>
+                                <h1>-@{reply.userName} <span>@1:45pm 10-10-2020</span></h1>
 
                                 <span style={{display:"flex", alignItems:"center",fontSize:"18px"}}>
                                     <div style={{display:"flex",justifyContent:"center",alignItems:"center"}} onClick={()=>likeHandler(reply._id)}>

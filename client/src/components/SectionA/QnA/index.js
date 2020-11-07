@@ -6,10 +6,12 @@ import avatar from  '../../../images/avatar_user_2.jpg'
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
 
+
 import { QuestionsContext } from '../../../data/QuestionsContext'
 import UserContext from '../../../data/UserContext'
 import axios from 'axios';
-// import Reply from './reply'
+
+
 
 const Reply = React.lazy(()=> import('./reply'))
 
@@ -65,6 +67,8 @@ const handleSubscription =async(id)=>{
     
 }
 
+
+
     return (    
         <div className="post">
                 <div className="post-header">
@@ -106,6 +110,8 @@ const handleSubscription =async(id)=>{
 
                     </form>
                 </div>
+
+                
 
 {/* _______________REPLIES_______________ */}
             { toggleReplies &&

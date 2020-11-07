@@ -1,0 +1,32 @@
+:root {
+  --base-padding: 30px;
+  --accent-color: crimson;
+  --light-accent-color: rgb(252, 146, 168);
+  --secondary-color: rgb(250, 134, 157);
+  --primary-gray: #ebebeb;
+  --box-shadow: 1px 2px 5px rgb(248, 218, 213);
+}
+.cqHeader {
+  height: 50px;
+  /* display: flex;
+  align-items: center; */
+  width: 100%;
+  font-size: larger;
+  padding: var(--base-padding);
+  /* background-color: rgb(226, 226, 226); */
+}
+.switch {
+  font-size: 1.75em;
+  /* display: flex; */
+  /* align-items: center; */
+  /* border-bottom: 1px solid rgb(173, 171, 171); */
+  width: fit-content;
+  /* font-weight: 500; */
+}
+.post {
+  margin-top: 20px;
+  background-color: rgb(135, 135, 248);
+  color: white;
+  padding: 10px 25px 10px 25px;
+  border: none;
+}

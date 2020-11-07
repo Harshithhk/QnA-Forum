@@ -1,6 +1,7 @@
 import asyncHandler from 'express-async-handler'
 import mongoose from 'mongoose'
 import Reply from '../models/replyModel.js'
+import User from '../models/userModel.js'
 
 // @desc     Fetch all Replies
 // @route    GET /api/replies/
@@ -15,10 +16,24 @@ const getReplies = asyncHandler(async(req,res)=>{
 // @access   Public
 const getRepliesById = asyncHandler(async(req,res)=>{
 
-    const replies = await Reply.find({question:req.params.id})
+    var replies = await Reply.find({question:req.params.id})
+    console.log(replies)
+//     replies.forEach(async(r)=>{
+//         try {
+//             var username = await User.find({ _id: r.user })
+//             r.userName = username.name
+//             console.log(username.name)
+//         } catch (err) {
+//             console.log(err)
+//         }
+//    })
+        
+
+   
     
     if(replies){
         res.json(replies)
+        console.log(`idk${replies}`)
     } else {
         res.status(404)
     }

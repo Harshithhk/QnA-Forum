@@ -7,6 +7,7 @@ import HomeScreen from './screens/HomeScreen'
 import Header from './components/header'
 import RegisterScreen from './screens/RegisterScreen'
 import LoginScreen from './screens/LoginScreen'
+import CreateQuestion from './components/CreateQuestion'
 
 import {
   BrowserRouter as Router,
@@ -52,11 +53,12 @@ function App() {
           <Header/>
           <Switch>
             <Route exact path = '/' component={HomeScreen} />
+            <Route exact path = '/createquestion' component={CreateQuestion} />
             <Route exact path = '/myquestions' component={HomeScreen} />
             <Route exact path='/register' component={RegisterScreen}/>
             <Route exact path='/login' component={LoginScreen}/>
           </Switch>
-      </UserContext.Provider>>
+      </UserContext.Provider>
       </Router>
     </div>
   );

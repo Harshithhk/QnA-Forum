@@ -40,7 +40,11 @@ const importReplyData = async()=>{
     
     try{
         await Reply.deleteMany()
+       
         // await Question.deleteMany()
+        replies.map((reply)=>{
+            
+        })
         
        
         await Reply.insertMany(replies)

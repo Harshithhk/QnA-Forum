@@ -12,20 +12,20 @@ const SideProfile = () => {
             <h1 style={{marginLeft:"5px",fontSize:"2rem"}}>Harshith Kelkar</h1>
             </div>
             
-            <div style={{background:"",height:"2rem", display:"flex",justifyContent:"space-between",alignItems:"center",marginTop:"0.5rem",padding:"0.5rem"}}> <h3>Ratings Earned</h3><div></div></div>
+            <div style={{background:"",height:"2rem", display:"flex",justifyContent:"space-between",alignItems:"center",marginTop:"0.5rem",padding:"0.5rem",marginTop:"30px"}}> <h3>Ratings Earned</h3><div></div></div>
             <ul className={styles.ul}>
-                <li style={{backgroundColor: "rgb(255, 242, 245)",fontWeight:"bolder",fontSize:"1.2rem"}}>Total: <span style={{color:"crimson"}}>165</span></li>
+                <li style={{backgroundColor: "rgb(255, 242, 245)",fontWeight:"bolder",fontSize:"1.2rem"}}>Total: <span style={{color:"crimson",marginLeft:"5px"}}>165</span></li>
                 <li>
-                    <div style={{background:`rgba(220,20,60,0.8)`,color:"white",padding:"2px",paddingRight:"4px",paddingLeft:"4px",display:"flex",alignItems:"center",justifyContent:"center"}}>
+                    <div style={{background:`rgba(220,20,60,0.8)`,color:"white",padding:"2px",paddingRight:"4px",paddingLeft:"4px",display:"flex",alignItems:"center",justifyContent:"center",marginRight:"5px"}}>
                                     <BsTrophy style={{color:"yellow", fontSize:"18px"}}/>
                 </div>
-                    Endorsments : <span style={{color:"crimson"}}>40</span></li>
+                    Endorsments : <span style={{color:"crimson",marginLeft:"5px"}}> 40</span></li>
 
                 <li>
-                    <div style={{background:`rgba(220,20,60,0.8)`,color:"white",padding:"2px",paddingRight:"4px",paddingLeft:"4px",display:"flex",alignItems:"center",justifyContent:"center"}}>
+                    <div style={{background:`rgba(220,20,60,0.8)`,color:"white",padding:"2px",paddingRight:"4px",paddingLeft:"4px",display:"flex",alignItems:"center",justifyContent:"center",marginRight:"5px"}}>
                                         <AiFillStar style={{color:"white", fontSize:"18px"}}/>
                                         </div>
-                    Community : <span style={{color:"crimson"}}>125</span></li>
+                    Community : <span style={{color:"crimson",marginLeft:"5px"}}> 125</span></li>
             </ul>
             <div style={{background:"",height:"2rem", display:"flex",justifyContent:"space-between",alignItems:"center",marginTop:"0.5rem",padding:"0.5rem"}}> <h3>Notifications</h3><div></div></div>
             <ul className={styles.ul}>

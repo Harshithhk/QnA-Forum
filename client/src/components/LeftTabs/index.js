@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -15,7 +15,6 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
     maxWidth: 250,
-    // marginTop:'45px',
     backgroundColor: theme.palette.background.paper,
   },
 }));
@@ -24,8 +23,28 @@ function ListItemLink(props) {
   return <ListItem button component="a" {...props} />;
 }
 
-export default function SimpleList() {
+export default function SimpleList({what ,setWhat}) {
   const classes = useStyles();
+
+  const[selected1,setSelected1]=useState(false)
+  const[selected2,setSelected2]=useState(false)
+  const[selected3,setSelected3]=useState(false)
+
+  useEffect(()=>{
+    if(what == "What"){
+      setSelected1(true)
+      setSelected2(false)
+      setSelected3(false)
+    }else if(what == "createQ"){
+      setSelected1(false)
+      setSelected2(false)
+      setSelected3(true)
+    }else{
+      setSelected1(false)
+      setSelected2(true)
+      setSelected3(false)
+    }
+  },[what])
 
   return (
    
@@ -33,14 +52,14 @@ export default function SimpleList() {
       <Sticky>{({ style }) =>( 
         <div style={style}>
           <List  component="nav" aria-label="main mailbox folders" style={{paddingTop: '0px'}}>
-            <ListItem button selected style={{borderRight:''}}>
+            <ListItem button selected={selected1} style={{borderRight:''}} component={Link} to={'/'}>
               <ListItemIcon>
                 <HomeIcon style={{color: 'gold'}}/>
               </ListItemIcon>
               <ListItemText primary="Open" />
             </ListItem>
             {/* <Link style={{ textDecoration: 'none' }}> */}
-            <ListItem button component={Link} to={'myquestions'}>
+            <ListItem button selected={selected2} component={Link} to={'myquestions'}>
               <ListItemIcon>
                 <RecordVoiceOverIcon />
               </ListItemIcon>
@@ -51,7 +70,7 @@ export default function SimpleList() {
           <Divider />
           <List component="nav" aria-label="secondary mailbox folders">
             <ListItem button>
-              <ListItemText primary="Trash" />
+              <ListItemText primary="+ Create Question " onClick={()=>setWhat("createQ")}/>
             </ListItem>
             <ListItemLink href="#simple-list">
               <ListItemText primary="Spam" />
@@ -62,5 +81,5 @@ export default function SimpleList() {
       </Sticky>
     </div>
       
-  );
+  )
 }

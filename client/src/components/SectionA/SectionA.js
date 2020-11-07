@@ -3,13 +3,15 @@ import SemiHeader from './SemiHeader'
 import Qna from './QnA'
 import { QuestionsContext } from '../../data/QuestionsContext'
 import UserContext from '../../data/UserContext'
-import { useLocation } from 'react-router-dom'
+import { Route, useLocation } from 'react-router-dom'
 
-const SectionA = () => {
+import CreateQuestion from '../CreateQuestion'
+
+const SectionA = ({what,setWhat}) => {
     const location = useLocation();
     const {questions} = useContext(QuestionsContext)
     const {userData , setUserData} = useContext(UserContext)
-    const [what , setWhat] = useState("What");
+    
 
 
     useEffect(()=>{
@@ -41,6 +43,12 @@ const SectionA = () => {
                               />
                         )
                     }):
+                    what =="createQ"?
+                    <>
+                   
+                    <CreateQuestion/>
+                    </>
+                    :
                     what.map((question)=>{
                         return(
                              <Qna key={question._id} title={question.title} description={question.description}
