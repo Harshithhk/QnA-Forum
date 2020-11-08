@@ -1,6 +1,7 @@
 import asyncHandler from 'express-async-handler'
 import generateToken from '../utils/generateToken.js'
 import User from '../models/userModel.js' 
+import Reply from '../models/replyModel.js'
 
 // @desc     Auth user & get token
 // @route    POST /api/users/login
@@ -54,6 +55,9 @@ const registerUser =asyncHandler(async(req,res)=>{
             isAdmin:user.isAdmin,
             token:generateToken(user._id),
             likes: user.likes,
+            rating:user.rating,
+            endorsments:user.endorsments,
+            communityRatings:user.communityRatings,
             questionSubscriptions:user.questionSubscriptions,
         })
     }else{
@@ -78,6 +82,9 @@ const getUserProfile =asyncHandler(async(req,res)=>{
         email: user.email,
         isAdmin: user.isAdmin,
         likes:user.likes,
+        rating:user.rating,
+        endorsments:user.endorsments,
+        communityRatings:user.communityRatings,
         questionSubscriptions: user.questionSubscriptions,
     })
    }else{
@@ -92,6 +99,7 @@ const getUserProfile =asyncHandler(async(req,res)=>{
 // @access   Private
 const updateUserProfile =asyncHandler(async(req,res)=>{
     
+    
    
 //    console.log(`USER OF REPLY ${userOfReply}`)
    
@@ -99,20 +107,12 @@ const updateUserProfile =asyncHandler(async(req,res)=>{
 
    if(user){
 
-        const userOfReply = req.body.userOfReply
-        console.log(userOfReply)
-         if(user.likes.length>req.body.likes.length){
-             console.log(`Decrement`)
-             const userOfR = await User.findById(userOfReply)
-             var updatedRating = userOfR.rating-1
-            const UserOfR = await User.findByIdAndUpdate({_id:userOfReply},{"rating":updatedRating})
-         }else{
-            console.log(`Incriment`)
-            const userOfR = await User.findById(userOfReply)
-             var updatedRating = userOfR.rating+1
-            const UserOfR = await User.findByIdAndUpdate({_id:userOfReply},{"rating":updatedRating})
+    // HANDLE LIKES
+        if(user.likes.length!=req.body.likes.length){
+        await handleLikes(req,res,user)
         }
 
+    // UPDATING USER
         user.name = req.body.name || user.name
         user.email = req.body.email || user.email
         if(req.body.password){
@@ -133,6 +133,36 @@ const updateUserProfile =asyncHandler(async(req,res)=>{
        res.status(404)
        throw new Error('User not found')
    }
+})
+
+const handleLikes=asyncHandler(async(req,res,user)=>{
+
+    //HANDLING NO OF LIKES
+    var replyData 
+    try{
+    replyData = await Reply.findById(req.body.replyId)
+    }catch(err){
+        console.log(err)
+    }
+    
+    // HANDLING RATINGS
+        const userOfReply = req.body.userOfReply
+        if(user.likes.length>req.body.likes.length){
+             console.log(`Decrement`)
+             const userOfR = await User.findById(userOfReply)
+             var updatedRating = userOfR.rating-1
+            
+            await User.findByIdAndUpdate({_id:userOfReply},{"rating":updatedRating})
+            replyData.noOfLikes-=1
+            await replyData.save()
+        }else{
+            console.log(`Incriment`)
+            const userOfR = await User.findById(userOfReply)
+             var updatedRating = userOfR.rating+1
+            await User.findByIdAndUpdate({_id:userOfReply},{"rating":updatedRating})
+            replyData.noOfLikes+=1
+            await replyData.save()
+        }
 })
 
 

@@ -11,15 +11,17 @@ const SideProfile = () => {
 
     return (
         <div className={styles.profile}>
+            {userData &&
+            <>
             <div style={{display:"flex",alignItems:"center",borderBottom: "0.5px solid lightgray"}}>
             <div className={styles.avatar}></div>
-            {userData &&
-            <h1 style={{marginLeft:"5px",fontSize:"2rem"}}>{userData.name}</h1>}
+            
+            <h1 style={{marginLeft:"5px",fontSize:"2rem"}}>{userData.name}</h1>
             </div>
             
             <div style={{background:"",height:"2rem", display:"flex",justifyContent:"space-between",alignItems:"center",marginTop:"0.5rem",padding:"0.5rem",marginTop:"30px"}}> <h3>Ratings Earned</h3><div></div></div>
             <ul className={styles.ul}>
-                <li style={{backgroundColor: "rgb(255, 242, 245)",fontWeight:"bolder",fontSize:"1.2rem"}}>Total: <span style={{color:"crimson",marginLeft:"5px"}}>165</span></li>
+            <li style={{backgroundColor: "rgb(255, 242, 245)",fontWeight:"bolder",fontSize:"1.2rem"}}>Total: <span style={{color:"crimson",marginLeft:"5px"}}>{userData.rating}</span></li>
                 <li>
                     <div style={{background:`rgba(220,20,60,0.8)`,color:"white",padding:"2px",paddingRight:"4px",paddingLeft:"4px",display:"flex",alignItems:"center",justifyContent:"center",marginRight:"5px"}}>
                                     <BsTrophy style={{color:"yellow", fontSize:"18px"}}/>
@@ -42,6 +44,7 @@ const SideProfile = () => {
 
 
             <h1></h1>
+            </>}
         </div>
     )
 }

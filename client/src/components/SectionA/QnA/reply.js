@@ -70,6 +70,7 @@ const Reply = ({id,replies,setReplies,setToggleReplies}) => {
         const res = await axios.put("http://localhost:5000/api/users/profile",{
             likes:deleteLike,
             userOfReply:userOfReply,
+            replyId:_id,
         },{headers:{"authorization": token}})
         console.log(res)
         setUserData({...userData,likes: deleteLike})
@@ -93,6 +94,7 @@ const Reply = ({id,replies,setReplies,setToggleReplies}) => {
         const res = await axios.put("http://localhost:5000/api/users/profile",{
             likes:insertLike,
             userOfReply:userOfReply,
+            replyId:_id,
         },{headers:{"authorization": token}})
         console.log(res)
 
@@ -146,8 +148,8 @@ const Reply = ({id,replies,setReplies,setToggleReplies}) => {
                                         </div>
                                         }
                                     </div>
-                                    {reply.noOfLikes == 0 &&
-                                <div style={{fontSize:"15px",marginLeft:"2px",fontWeight:"bold"}}>{reply.noOfLikes}3</div>}
+                                    {reply.noOfLikes != 0 &&
+                                <div style={{fontSize:"15px",marginLeft:"2px",fontWeight:"bold"}}>{reply.noOfLikes}</div>}
                                 </span>
 
                             </div>

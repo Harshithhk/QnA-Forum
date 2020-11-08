@@ -28,10 +28,21 @@ const userSchema = mongoose.Schema({
         required:true,
         default: 0
     },
+    endorsments:{
+        type:Number,
+        required:true,
+        default: 0
+    },
+    communityRatings:{
+        type:Number,
+        required:true,
+        default: 0
+    },
+
     likes:{
         type:[mongoose.Schema.Types.ObjectId],
         required:true,
-        default: 0
+        default: []
     },
     questionSubscriptions:{
         type:[String],
