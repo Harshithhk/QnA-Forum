@@ -5,9 +5,6 @@ import TextField from '@material-ui/core/TextField'
 
 import axios from 'axios'
 
-
-
-
 export default function MultilineTextFields() {
 
   const [value, setValue] = React.useState({title:``,description:``})
@@ -27,7 +24,8 @@ export default function MultilineTextFields() {
       const res = await axios.post('http://localhost:5000/api/questions/',value,{headers:{"authorization": token}})
       console.log(res)
       setValue({title:``,description:``})
-      }catch(err){
+        window.location='/'
+    }catch(err){
           console.log(err)
       }
   }

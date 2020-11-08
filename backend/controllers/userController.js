@@ -108,7 +108,7 @@ const updateUserProfile =asyncHandler(async(req,res)=>{
    if(user){
 
     // HANDLE LIKES
-        if(user.likes.length!=req.body.likes.length){
+        if(req.body.likes && user.likes.length!=req.body.likes.length){
         await handleLikes(req,res,user)
         }
 

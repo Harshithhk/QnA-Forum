@@ -17,7 +17,7 @@ const Reply = React.lazy(()=> import('./reply'))
 
 
 
-const QnA = ({title,description,image,noOfReplies,id,match}) => {
+const QnA = ({title,description,image,noOfReplies,id,match,user}) => {
 
     const [toggleReplies,setToggleReplies] = useState(false)
     const {userData , setUserData} = useContext(UserContext)
@@ -108,7 +108,7 @@ const handleSubscription =async(id)=>{
                        
                         </i>
                     </a>
-                    <a href="/#">-@Harshith Kelkar</a>
+                        <a href="/#">-@Harshith Kelkar</a>
                     <a href="/#"> @12:25pm 8-10-2020 </a>
                 </div>
                 {image && 

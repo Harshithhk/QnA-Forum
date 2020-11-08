@@ -98,7 +98,7 @@ const Reply = ({id,replies,setReplies,setToggleReplies}) => {
         },{headers:{"authorization": token}})
         console.log(res)
 
-    }catch(err){
+      }catch(err){
         var deleteLike = userData.likes.filter((like)=>{
                 return like!= _id
         })

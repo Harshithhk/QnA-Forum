@@ -39,7 +39,7 @@ const SectionA = ({what,setWhat}) => {
                              <Qna key={question._id} title={question.title} description={question.description}
                              image={question.image}
                              noOfReplies={question.noOfReplies}
-                             id={question._id}
+                             id={question._id} user={question.user}
                               />
                         )
                     }):

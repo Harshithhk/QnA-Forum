@@ -1,5 +1,6 @@
 import asyncHandler from 'express-async-handler'
 import mongoose from 'mongoose'
+import Question from '../models/questionModel.js'
 import Reply from '../models/replyModel.js'
 import User from '../models/userModel.js'
 
@@ -31,6 +32,10 @@ const getRepliesById = asyncHandler(async(req,res)=>{
 const createReply = asyncHandler(asyncHandler(async(req,res)=>{
     const {description,title,question,user}=req.body
     try{
+    const questionToBeUpdated =await Question.findById(question)
+        questionToBeUpdated.noOfReplies+=1
+        await questionToBeUpdated.save()
+
     const reply = new Reply({
         question,
         title:title || "A:",
