@@ -92,9 +92,27 @@ const getUserProfile =asyncHandler(async(req,res)=>{
 // @access   Private
 const updateUserProfile =asyncHandler(async(req,res)=>{
     
+   
+//    console.log(`USER OF REPLY ${userOfReply}`)
+   
    const user = await User.findById(req.user._id)
 
    if(user){
+
+        const userOfReply = req.body.userOfReply
+        console.log(userOfReply)
+         if(user.likes.length>req.body.likes.length){
+             console.log(`Decrement`)
+             const userOfR = await User.findById(userOfReply)
+             var updatedRating = userOfR.rating-1
+            const UserOfR = await User.findByIdAndUpdate({_id:userOfReply},{"rating":updatedRating})
+         }else{
+            console.log(`Incriment`)
+            const userOfR = await User.findById(userOfReply)
+             var updatedRating = userOfR.rating+1
+            const UserOfR = await User.findByIdAndUpdate({_id:userOfReply},{"rating":updatedRating})
+        }
+
         user.name = req.body.name || user.name
         user.email = req.body.email || user.email
         if(req.body.password){

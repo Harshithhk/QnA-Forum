@@ -58,7 +58,7 @@ const Reply = ({id,replies,setReplies,setToggleReplies}) => {
 
 
     // LIKE FUNCTION
-    const likeHandler =async (_id)=>{
+    const likeHandler =async (_id,userOfReply)=>{
         if(userData.likes.includes(_id)){
             var deleteLike = userData.likes.filter((like)=>{
                 return like!= _id
@@ -68,7 +68,8 @@ const Reply = ({id,replies,setReplies,setToggleReplies}) => {
         try{
         let token = localStorage.getItem("auth-token")
         const res = await axios.put("http://localhost:5000/api/users/profile",{
-            likes:deleteLike
+            likes:deleteLike,
+            userOfReply:userOfReply,
         },{headers:{"authorization": token}})
         console.log(res)
         setUserData({...userData,likes: deleteLike})
@@ -90,7 +91,8 @@ const Reply = ({id,replies,setReplies,setToggleReplies}) => {
       }
       try{
         const res = await axios.put("http://localhost:5000/api/users/profile",{
-            likes:insertLike
+            likes:insertLike,
+            userOfReply:userOfReply,
         },{headers:{"authorization": token}})
         console.log(res)
 
@@ -127,7 +129,7 @@ const Reply = ({id,replies,setReplies,setToggleReplies}) => {
                                 <h1>-@{reply.userName} <span>@1:45pm 10-10-2020</span></h1>
 
                                 <span style={{display:"flex", alignItems:"center",fontSize:"18px"}}>
-                                    <div style={{display:"flex",justifyContent:"center",alignItems:"center"}} onClick={()=>likeHandler(reply._id)}>
+                                    <div style={{display:"flex",justifyContent:"center",alignItems:"center"}} onClick={()=>likeHandler(reply._id,reply.user)}>
                                     {reply.trophies.length !== 0 &&
                                 <div style={{fontSize:"15px",marginLeft:"2px",fontWeight:"bold",display:"flex",justifyContent:"center",alignItems:"center",marginRight:"10px"}}>
                                     <div style={{background:`rgba(220,20,60,0.8)`,color:"white",padding:"2px",paddingRight:"4px",paddingLeft:"4px",display:"flex",alignItems:"center",justifyContent:"center"}}>
