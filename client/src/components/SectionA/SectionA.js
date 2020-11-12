@@ -1,11 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState ,Suspense} from 'react'
 import SemiHeader from './SemiHeader'
 import Qna from './QnA'
 import { QuestionsContext } from '../../data/QuestionsContext'
 import UserContext from '../../data/UserContext'
 import { Route, useLocation } from 'react-router-dom'
 
-import CreateQuestion from '../CreateQuestion'
+// import CreateQuestion from '../CreateQuestion'
+
+const CreateQuestion = React.lazy(()=> import('../CreateQuestion'))
+
 
 const SectionA = ({what,setWhat}) => {
     const location = useLocation();
@@ -45,8 +48,9 @@ const SectionA = ({what,setWhat}) => {
                     }):
                     what =="createQ"?
                     <>
-                   
+                    <Suspense fallback={<div></div>}>
                     <CreateQuestion/>
+                    </Suspense>
                     </>
                     :
                     what.map((question)=>{

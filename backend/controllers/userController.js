@@ -138,7 +138,9 @@ const updateUserProfile =asyncHandler(async(req,res)=>{
 const handleLikes=asyncHandler(async(req,res,user)=>{
 
     //HANDLING NO OF LIKES
-    var replyData 
+    var replyData
+    
+     
     try{
     replyData = await Reply.findById(req.body.replyId)
     }catch(err){
@@ -147,19 +149,41 @@ const handleLikes=asyncHandler(async(req,res,user)=>{
     
     // HANDLING RATINGS
         const userOfReply = req.body.userOfReply
+        const userOfR = await User.findById(userOfReply)
+
+        var updatedEndorsments =  userOfR.endorsments
+        var updatedCommunityRatings = userOfR.communityRatings
+        console.log(updatedCommunityRatings)
+        console.log(updatedEndorsments)
+
         if(user.likes.length>req.body.likes.length){
-             console.log(`Decrement`)
-             const userOfR = await User.findById(userOfReply)
-             var updatedRating = userOfR.rating-1
-            
-            await User.findByIdAndUpdate({_id:userOfReply},{"rating":updatedRating})
+            console.log(`Decrement`)
+
+            var updatedRating = userOfR.rating-1
+
+            if(req.user.isAdmin){
+                updatedEndorsments -= 1
+            }else{
+                updatedCommunityRatings -= 1
+            }
+
+            await User.findByIdAndUpdate({_id:userOfReply},{"rating":updatedRating,"endorsments":updatedEndorsments,"communityRatings":updatedCommunityRatings})
+
             replyData.noOfLikes-=1
             await replyData.save()
-        }else{
+        }
+        else{
             console.log(`Incriment`)
-            const userOfR = await User.findById(userOfReply)
+
              var updatedRating = userOfR.rating+1
-            await User.findByIdAndUpdate({_id:userOfReply},{"rating":updatedRating})
+
+            if(req.user.isAdmin){
+                updatedEndorsments += 1
+            }else{
+                updatedCommunityRatings += 1
+            }
+
+            await User.findByIdAndUpdate({_id:userOfReply},{"rating":updatedRating,"endorsments":updatedEndorsments,"communityRatings":updatedCommunityRatings})
             replyData.noOfLikes+=1
             await replyData.save()
         }
