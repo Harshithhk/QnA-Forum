@@ -1,5 +1,7 @@
 import React from 'react'
 
+// import {useForm} from 'react-hook-form'
+
 import styles from './CreateQuestion.module.css'
 import TextField from '@material-ui/core/TextField'
 
@@ -30,6 +32,20 @@ export default function MultilineTextFields() {
       }
   }
 
+  //______________ UPLOADING IMAGES_______________________
+
+  var picture
+  const fileHandler=(e)=>{
+    console.log(e.target.files[0])
+    picture = e.target.files[0]
+  }
+  const imgSubmit=async()=>{
+    const formData = new FormData()
+    formData.append("picture",picture)
+    const res = await axios.post('http://localhost:5000/api/image',formData)
+    alert(JSON.stringify(res))
+  }
+
   return (
       
   
@@ -49,7 +65,10 @@ export default function MultilineTextFields() {
           style={{marginTop:"20px"}}
           variant="outlined"
         />
-        <br/>
+        <br/> 
+        <br/> 
+        <input type="file" name = "picture" onChange={fileHandler}/>
+        <button onClick={imgSubmit}>Submit Image</button>
         <TextField
           id="standard-multiline-static"
           label="Description"

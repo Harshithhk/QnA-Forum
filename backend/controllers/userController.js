@@ -20,6 +20,9 @@ const authUser =asyncHandler(async(req,res)=>{
             token:generateToken(user._id),
             likes: user.likes,
             questionSubscriptions:user.questionSubscriptions,
+            rating:user.rating,
+            endorsments:user.endorsments,
+            communityRatings:user.communityRatings,
         })
     } else {
         res.status(401)
@@ -163,6 +166,7 @@ const handleLikes=asyncHandler(async(req,res,user)=>{
 
             if(req.user.isAdmin){
                 updatedEndorsments -= 1
+                updatedRating -= 4
             }else{
                 updatedCommunityRatings -= 1
             }
@@ -179,6 +183,7 @@ const handleLikes=asyncHandler(async(req,res,user)=>{
 
             if(req.user.isAdmin){
                 updatedEndorsments += 1
+                updatedRating += 4
             }else{
                 updatedCommunityRatings += 1
             }
