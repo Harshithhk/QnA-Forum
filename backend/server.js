@@ -5,6 +5,7 @@ import connectDB from './config/db.js'
 import colors from 'colors'
 import cors from 'cors'
 import fileUpload from 'express-fileupload' 
+import path from 'path'
 
 import questionRoutes from './routes/questionRoutes.js'
 import replyRoutes from './routes/replyRoutes.js'
@@ -13,6 +14,7 @@ import {tokenValidation} from './controllers/authController.js'
 
 import bodyParser from 'body-parser'
 import User from './models/userModel.js'
+
 
 dotenv.config()
 
@@ -40,26 +42,9 @@ app.use('/api/questions',questionRoutes)
 app.use('/api/replies',replyRoutes)
 app.use('/api/users',userRoutes)
 
-app.post('/api/image',async(req,res)=>{
-    console.log("IMAGES")
-    try{
-        if(!req.files){
-            res.send({
-                status:false,
-                message: "No files"
-            })
-        }else{
-            const {picture} = req.files
-            picture.mv('./uploads/' + picture.name)
-            res.send({
-                status: true,
-                message :'File is uploaded'
-            })
-        }
-    }catch(e){
-        res.status(500).send(e)
-    }
-})
+// Handling Images
+
+
 
 const PORT = process.env.PORT || 5000
 

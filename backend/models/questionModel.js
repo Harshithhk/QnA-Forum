@@ -24,9 +24,8 @@ const questionSchema = mongoose.Schema({
         ref: 'User',
     },
     image:{
-        type:Boolean,
-        required: true,
-        default: false
+        type:String,
+        required: false,
     }
     
 },{

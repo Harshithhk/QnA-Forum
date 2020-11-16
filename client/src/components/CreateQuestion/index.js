@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 // import {useForm} from 'react-hook-form'
 
@@ -20,13 +20,21 @@ export default function MultilineTextFields() {
       }
   };
 
+
+  // Submitting Question
+  var questionId;
   const submitQuestion =async()=>{
       try{
+        // TEXT
       let token = localStorage.getItem("auth-token")
       const res = await axios.post('http://localhost:5000/api/questions/',value,{headers:{"authorization": token}})
+      questionId = res.data.questionId
+      console.log(questionId)
       console.log(res)
       setValue({title:``,description:``})
-        window.location='/'
+
+      await imgSubmit()
+      window.location='/'
     }catch(err){
           console.log(err)
       }
@@ -34,15 +42,20 @@ export default function MultilineTextFields() {
 
   //______________ UPLOADING IMAGES_______________________
 
-  var picture
+  const [ picture , setPicture] = useState()
+
   const fileHandler=(e)=>{
     console.log(e.target.files[0])
-    picture = e.target.files[0]
+    setPicture (e.target.files[0])
+    // console.log(picture)
   }
   const imgSubmit=async()=>{
     const formData = new FormData()
     formData.append("picture",picture)
-    const res = await axios.post('http://localhost:5000/api/image',formData)
+
+    let token = localStorage.getItem("auth-token")
+    const res = await axios.post(`http://localhost:5000/api/questions/image/${questionId}`,formData,{headers:{"authorization": token}})
+    console.log(res)
     alert(JSON.stringify(res))
   }
 
@@ -68,7 +81,6 @@ export default function MultilineTextFields() {
         <br/> 
         <br/> 
         <input type="file" name = "picture" onChange={fileHandler}/>
-        <button onClick={imgSubmit}>Submit Image</button>
         <TextField
           id="standard-multiline-static"
           label="Description"

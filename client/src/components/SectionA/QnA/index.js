@@ -113,7 +113,7 @@ const handleSubscription =async(id)=>{
                 </div>
                 {image && 
                 <div className ="post-image">
-                    <img src={questingImage} alt=""/>
+                    <img src={image} alt={image}/>
                 </div>
                 }
 

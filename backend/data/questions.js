@@ -6,7 +6,7 @@ const questions = [
         description:`I was wondering if india could make or maybe already has a startup or an organisation which could prommote reusisci omnis consectetur sed sint!
          Laboriosam consequatur sit qui porro cumque.`,
 
-         noOfReplies: 2,
+        //  noOfReplies: 2,
 
          image:true
     },
@@ -16,7 +16,7 @@ const questions = [
         
         Is there any way to delete a pull request completely so it's no longer accessible via URL or shows up on your activity history?`,
 
-        noOfReplies: 3
+        // noOfReplies: 3
 
     },
 ]
