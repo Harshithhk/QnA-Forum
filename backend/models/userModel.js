@@ -38,17 +38,23 @@ const userSchema = mongoose.Schema({
         required:true,
         default: 0
     },
-
+    questions:{
+        type:[mongoose.Schema.Types.ObjectId],
+        required:true,
+        default:[],
+        ref:'Question'
+    },
     likes:{
         type:[mongoose.Schema.Types.ObjectId],
         required:true,
-        default: []
+        default: [],
+        ref:'Reply'
     },
     questionSubscriptions:{
         type:[String],
         required:true,
         default:[]
-    }   
+    },   
 },{
     timestamps: true
 })

@@ -8,7 +8,7 @@ const questions = [
 
         //  noOfReplies: 2,
 
-         image:true
+         image:'http://localhost:5000/api/questions/image/1605541838085spectrum.jpg'
     },
       {
         title: 'Delete a closed pull request from GitHub',

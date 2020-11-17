@@ -33,12 +33,14 @@ const createQuestion =asyncHandler(async(req,res)=>{
     
     // const question = await Question.findById(req.params.id)
     try{
-    const user = await User.findById(req.user._id) 
+    let user = await User.findById(req.user._id) 
     const question = await Question.create({
         user:user._id,
         title:req.body.title,
         description: req.body.description
     })
+    user.questions.push(question._id)
+    await user.save()
     res.send({questionId:question._id})
 
     }catch(err){
@@ -49,7 +51,7 @@ const createQuestion =asyncHandler(async(req,res)=>{
 
 const createQuestionImage =asyncHandler(async(req,res)=>{
      console.log("IMAGES")
-     console.log(req.params)
+    //  console.log(req.params)
     try{
         if(!req.files){
             res.send({
@@ -62,7 +64,7 @@ const createQuestionImage =asyncHandler(async(req,res)=>{
             // console.log(picture)
             var date = new Date()
             var imageName =  date.getDate() + date.getTime() + picture.name
-            console.log(imageName)
+            // console.log(imageName)
             picture.mv('./uploads/' + imageName)
             await Question.findByIdAndUpdate({_id:req.params.questionId},{"image":`http://localhost:5000/api/questions/image/${imageName}`})
             res.send({
@@ -79,7 +81,7 @@ const createQuestionImage =asyncHandler(async(req,res)=>{
 
 const getQuestionImage =asyncHandler(async(req,res)=>{
     var absolutePath = path.resolve(`./uploads/${req.params.name}`)
-    console.log(req.params)
+    // console.log(req.params)
     // res.static(`/uploads/${req.params.name}`)
     res.sendFile(absolutePath)
 })

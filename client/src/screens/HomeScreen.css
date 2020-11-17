@@ -171,6 +171,7 @@
 .post-image img {
   /* display: none; */
   max-width: 70%;
+  max-height: 350px;
   /* min-width: 50%; */
 }
 @media only screen and (max-width: 1200px) {
