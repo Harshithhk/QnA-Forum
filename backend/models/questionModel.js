@@ -26,6 +26,11 @@ const questionSchema = mongoose.Schema({
     image:{
         type:String,
         required: false,
+    },
+    anonymous:{
+        type:Boolean,
+        required: true,
+        default: false,
     }
     
 },{

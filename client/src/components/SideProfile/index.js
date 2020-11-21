@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import styles from './SideProfile.module.css'
-import avatar from '../../images/avatar_user_2.jpg'
+import avatar from '../../images/avatar2.png'
 import {BsTrophy} from 'react-icons/bs'
 import {AiFillStar} from 'react-icons/ai'
 import UserContext from '../../data/UserContext'

@@ -8,7 +8,8 @@ const questions = [
 
         //  noOfReplies: 2,
 
-         image:'http://localhost:5000/api/questions/image/1605541838085spectrum.jpg'
+         image:'http://localhost:5000/api/questions/image/spectrum.jpg',
+         anonymous: true,
     },
       {
         title: 'Delete a closed pull request from GitHub',
@@ -19,5 +20,6 @@ const questions = [
         // noOfReplies: 3
 
     },
+    
 ]
 export default questions

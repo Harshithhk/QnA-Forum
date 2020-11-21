@@ -9,11 +9,11 @@ const SemiHeader = () => {
                 All Questions
                 </h1>
                 <h1 className="qna-header-h1">
-                    Top Replied
+                Department
                 </h1>
-                <h1 className="qna-header-h1">
+                {/* <h1 className="qna-header-h1">
                     Fresh
-                </h1>
+                </h1> */}
             </div>
     )
 }

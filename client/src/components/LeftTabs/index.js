@@ -63,7 +63,7 @@ export default function SimpleList({what ,setWhat}) {
               <ListItemIcon>
                 <RecordVoiceOverIcon />
               </ListItemIcon>
-              <ListItemText primary="My Questions" />
+              <ListItemText primary="My Subscriptions" />
             </ListItem>
             {/* </Link> */}
           </List>

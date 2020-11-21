@@ -137,7 +137,7 @@ const Reply = ({id,replies,setReplies,setToggleReplies}) => {
                                     <div style={{background:`rgba(220,20,60,0.8)`,color:"white",padding:"2px",paddingRight:"4px",paddingLeft:"4px",display:"flex",alignItems:"center",justifyContent:"center"}}>
                                     <BsTrophy style={{color:"yellow", fontSize:"18px"}}/>
                                     </div>
-                                    <span style={{fontSize:"15px",marginLeft:"2px",fontWeight:"bold"}}>{reply.trophies.length+1}</span></div>}
+                                    <span style={{fontSize:"15px",marginLeft:"2px",fontWeight:"bold"}}>{reply.trophies.length}</span></div>}
                                         {
                                         userData.likes.includes(reply._id)?
                                         <div style={{background:`rgba(220,20,60,1)`,color:"white",padding:"2px",display:"flex",alignItems:"center",justifyContent:"center"}}>

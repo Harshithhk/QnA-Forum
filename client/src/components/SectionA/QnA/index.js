@@ -20,8 +20,23 @@ const Reply = React.lazy(()=> import('./reply'))
 const QnA = ({title,description,image,noOfReplies,id,match,user}) => {
 
     const [toggleReplies,setToggleReplies] = useState(false)
+    const [userName,setUserName] = useState("")
     const {userData , setUserData} = useContext(UserContext)
     const [replies,setReplies]=useState({data:[]})
+
+    const getUser=async()=>{
+        try{
+         const UserQ = await axios.get(`http://localhost:5000/api/users/profile/${user}`)
+         setUserName(UserQ.data) 
+         console.log(UserQ)
+        }catch(err){
+            setUserName("Anonymous")
+        }
+    }
+
+    useEffect(()=>{
+        getUser()
+    },[])
 
     
 
@@ -108,7 +123,7 @@ const handleSubscription =async(id)=>{
                        
                         </i>
                     </a>
-                        <a href="/#">-@Harshith Kelkar</a>
+                        <a href="/#">-@{userName}</a>
                     <a href="/#"> @12:25pm 8-10-2020 </a>
                 </div>
                 {image && 

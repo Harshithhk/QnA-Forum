@@ -138,6 +138,18 @@ const updateUserProfile =asyncHandler(async(req,res)=>{
    }
 })
 
+// @desc     GET user Names
+// @route    GET /api/users/profile/:id
+// @access   Public
+const getUserName = asyncHandler(async(req,res)=>{
+    const user =await User.findById(req.params.id)
+    res.send(user.name)
+})
+
+
+// HANDLING LIKES
+// REQ frOM USER UPDATE URL
+
 const handleLikes=asyncHandler(async(req,res,user)=>{
 
     //HANDLING NO OF LIKES
@@ -167,6 +179,7 @@ const handleLikes=asyncHandler(async(req,res,user)=>{
             if(req.user.isAdmin){
                 updatedEndorsments -= 1
                 updatedRating -= 4
+                replyData.trophies.pop(userOfReply)
             }else{
                 updatedCommunityRatings -= 1
             }
@@ -184,6 +197,8 @@ const handleLikes=asyncHandler(async(req,res,user)=>{
             if(req.user.isAdmin){
                 updatedEndorsments += 1
                 updatedRating += 4
+                replyData.trophies.push(userOfReply)
+                replyData.save()
             }else{
                 updatedCommunityRatings += 1
             }
@@ -195,4 +210,4 @@ const handleLikes=asyncHandler(async(req,res,user)=>{
 })
 
 
-export{authUser,registerUser,getUserProfile,updateUserProfile}
+export{authUser,registerUser,getUserProfile,updateUserProfile,getUserName}

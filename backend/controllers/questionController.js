@@ -9,8 +9,15 @@ import path from 'path'
 // @route    GET /api/questions
 // @access   Public
 const getQuestions =asyncHandler(async(req,res)=>{
-    const question = await Question.find({})
-    res.json(question)
+    var question = await Question.find({})
+    const filteredQuestion =  question.filter((q)=>{
+        var temp = q;
+        if(temp.anonymous == true){
+            temp.user = "kjdhsfksdjfh"
+        }
+        return temp
+    })
+    res.json(filteredQuestion)
 })
 
 // @desc     Fetch single Questions
